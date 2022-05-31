@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="../../../assets/images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+      </div>
+      <div class="col-md-5 contents text-center">
+        <form class="mt-5" (ngSubmit)="getAgentLogins(loginForm)" #loginForm="ngForm">
+            <span class="h1 fw-bold">
+                Agent Login
+            </span>
+            <div class="input-group input-group-lg mt-5 mb-3">
+                <!--span class="input-group-text bg-transparent" id="basic-addon1">
+                    <i class="bi bi-alarm-fill"></i>
+                </span-->
+                <input required type="text" class="form-control shadow" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"
+                [(ngModel)] = 'agent.username' name="username" userName="ngModel">
+            </div>
+            <div class="input-group input-group-lg mt-5 mb-3">
+                <!--span class="input-group-text bg-transparent" id="basic-addon1">
+                    <i class="bi bi-alarm-fill"></i>
+                </span-->
+                <input required type="password" class="form-control shadow" placeholder="Password" aria-label="Mot de passe" aria-describedby="basic-addon1"
+                [(ngModel)] = 'agent.password' name="password">
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary mt-5 mb-5 btn-lg rounded-pill" [disabled]="!loginForm.valid">
+                    Login
+                </button>
+            </div>
+
+            <div class="text-center mb-3">
+                <span class="txt1">
+                    Forgot
+                </span>
+                <a class="txt2" href="#">
+                    Username / Password?
+                </a>
+            </div>
+
+            <div class="text-center mt-5">
+                <a class="txt2" href="#">
+                    Create your Account
+                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                </a>
+            </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>

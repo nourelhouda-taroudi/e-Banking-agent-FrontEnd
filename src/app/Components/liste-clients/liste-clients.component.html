@@ -1,0 +1,233 @@
+<div class="container"  id="main-container">
+    <div class="h2 mb-5 p-3 border shadow" style="background-color: #3286E6;color : #fff">
+        Liste des clients
+        <div class="float-end">
+            <div class="input-group">
+                <input type="search" class="form-control" (ngModelChange) = "searchClient(key.value)" #key="ngModel" ngModel
+                name="key" placeholder="rechercher">
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4 d-flex justify-content-around">
+        <div class="col-md-3 card text-center border shadow mx-2" *ngFor="let client of clients">
+            <div class="card-header">
+            Client No {{client?.id}}
+            </div>
+            <div class="card-body">
+            <div class="card-title">
+                <div class="d-flex justify-content-between">
+                    <div class=" mb-3 p-2 rounded-pill float-start" style = "width : 35%;background-color: #1FD1FD; color : #fff;">Nom</div>
+                    <span class="fw-bold ms-5">{{client?.nom}}</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class=" mb-3 p-2 rounded-pill float-start" style = "width : 35%;background-color: #1FD1FD; color : #fff;">Prenom</div>
+                    <span class="fw-bold ms-5">{{client?.prenom}}</span>
+                </div>
+            </div>
+                <div class="d-flex justify-content-around">
+                    <a (click) = "onOpenModal(client,'infos')" class="btn btn-primary m-1">Details</a>
+                    <a (click) = "onOpenModal(client,'update')" class="btn btn-success m-1">Modifier</a>
+                    <a (click) = "onOpenModal(client,'delete')" class="btn btn-danger m-1">Supprimer</a>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+    <!-- display infos of client Modal -->
+    <div class="modal fade" id="infosClientModal" tabindex="-1" role="dialog" aria-labelledby="infosClientModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infosClientModalLabel">Informations sur le Client  {{clientChoosed?.nom}} {{clientChoosed?.prenom}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="row">
+                        <div class="col-9 mx-auto">
+                            <div class="card-text mt-5">
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">ID Client</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.id}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Password</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.password}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Civilité</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.civilite}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Nom</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.nom}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Prenom</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.prenom}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Naissance</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.naissance}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Email</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.email}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Telephone</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.telephone}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Adresse</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.adresse}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Ville</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.ville}}</span>
+                                </div><hr><div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">codePostal</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.codePostal}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Numéro Carte Bancaire</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.numCarteBancaire}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Solde</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.solde}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">RIB</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.rib}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">CNI</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.cni}}</span>
+                                </div><hr>
+                                <div class="d-flex justify-content-between">
+                                    <div class=" mb-3 p-2 rounded-pill" style = "width : 40%;background-color: #1FD1FD; color : #fff;">Produit</div>
+                                    <span class="fw-bold ms-5">{{clientChoosed?.produit}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="updateClientModal" tabindex="-1" role="dialog" aria-labelledby="clientUpdateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="updateClientModalLabel">Modifier Client {{updateClient?.nom}} {{updateClient?.prenom}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <form #editForm="ngForm">
+                    <div class="form-group">
+                        <label for="name">ID Client</label>
+                        <input type="text" ngModel="{{updateClient?.id}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" disabled="true">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" ngModel="{{updateClient?.nom}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="nom">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Prenom</label>
+                        <input type="text" ngModel="{{updateClient?.prenom}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="prenom">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Naissance</label>
+                        <input type="text" ngModel="{{updateClient?.naissance}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="naissance">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Email</label>
+                        <input type="text" ngModel="{{updateClient?.email}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="email">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Telephone</label>
+                        <input type="text" ngModel="{{updateClient?.telephone}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="telephone">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Adresse</label>
+                        <input type="text" ngModel="{{updateClient?.adresse}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="adresse">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Ville</label>
+                        <input type="text" ngModel="{{updateClient?.ville}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="ville">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Code Postal</label>
+                        <input type="text" ngModel="{{updateClient?.codePostal}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="code postal">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Password</label>
+                        <input type="text" ngModel="{{updateClient?.password}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="password">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Numéro Carte Bancaire</label>
+                        <input type="text" ngModel="{{updateClient?.numCarteBancaire}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="numero carte bancaire">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Solde Bancaire</label>
+                        <input type="text" ngModel="{{updateClient?.solde}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" disabled="true">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">RIB</label>
+                        <input type="text" ngModel="{{updateClient?.rib}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="RIB">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">CNI</label>
+                        <input type="text" ngModel="{{updateClient?.cni}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="CNI">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Civilité</label>
+                        <input type="text" ngModel="{{updateClient?.civilite}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="civilite">
+                     </div>
+                     <div class="form-group">
+                        <label for="name">Produit</label>
+                        <input type="text" ngModel="{{updateClient?.produit}}" name="nom" class="form-control" id="name" aria-describedby="emailHelp" placeholder="produit">
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Fermer</button>
+                        <button (click)="onUpdateClient(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Enregistrer</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+    </div>
+
+    <div class="modal fade" id="deleteClientModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModelLabel">Supprimer Client</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <p>Etes vous sûr de vouloir supprier le client  {{deleteClient?.nom}} {{deleteClient?.prenom}} ?</p>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                     <button (click)="onDeleteClient(deleteClient?.id||'')"  class="btn btn-danger" data-dismiss="modal">Yes</button>
+                  </div>
+               </div>
+         </div>
+       </div>
+    </div>
+
+    <div *ngIf="clients?.length == 0" class="col-lg-12 col-md-12 col-xl-12 mt-5">
+        <div class="alert alert-info text-center" role="alert">
+            <h4 class="alert-heading">AUCUN CLIENTS!</h4>
+            <p>Aucun Client n'a été trouvé</p>
+        </div>
+    </div>
+</div>

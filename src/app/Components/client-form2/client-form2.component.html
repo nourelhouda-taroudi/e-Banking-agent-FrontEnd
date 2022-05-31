@@ -1,0 +1,74 @@
+<div class="container mt-5">
+    <div class="h2 mb-5 p-3 border" style="background-color: #3286E6;color : #fff">
+        Ouverture d'un compte de paiement
+    </div>
+    <div class="card">
+        <div class="card-body" style="background-color: #D4D5D5;">
+            <form (ngSubmit)="onAddClient(clientForm)" #clientForm="ngForm">
+                <span style="font-weight: bold; font-size: 20px; margin: vertical 5px;">Informations client</span> <hr>
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Civilité</label>
+                        <select required class="form-control shadow" [(ngModel)] = 'client.civilite' name="civilite">
+                          <option>Monsieur</option>
+                          <option>Madame</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Date de Naissance</label>
+                      <input required id="naissance" class="form-control shadow" type="date" placeholder="Entrer la date de naissance"
+                      [(ngModel)] = 'client.naissance' name="naissance">
+                    </div>
+                  </div>
+                <div class="row mb-1">
+                  <div class="col mb-2">
+                    <label for="nom" class="form-label">Adresse</label>
+                    <input required id="adresse" class="form-control shadow" type="text" placeholder="Entrer votre adresse"
+                    [(ngModel)] = 'client.adresse' name="adresse">
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label">Ville</label>
+                    <input required id="ville" class="form-control shadow" type="text" placeholder="Entrer la ville"
+                    [(ngModel)] = 'client.ville' name="ville">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Code Postal</label>
+                    <input required id="CpdePostal" class="form-control shadow" type="text" placeholder="Entrer le code postal"
+                    [(ngModel)] = 'client.codePostal' name="codePostal">
+                  </div>
+                </div><hr>
+                <div class="row mb-1 mt-3">
+                    <div class="col mb-2">
+                      <label for="nom" class="form-label">Numéro CNI</label>
+                      <input required id="cni" class="form-control shadow" type="text" placeholder="Entrer le numéro de carte nationale"
+                      [(ngModel)] = 'client.cni' name="cni">
+                    </div>
+                  </div>
+                <div class="row mb-1 mt-3">
+                    <div class="col mb-2">
+                      <label for="nom" class="form-label">Numéro Carte Bancaire</label>
+                      <input required id="numCarteBancaire" class="form-control shadow" type="text" placeholder="Entrer le numéro de carte bancaire"
+                      [(ngModel)] = 'client.numCarteBancaire' name="numCarteBancaire">
+                    </div>
+                  </div>
+                  <div class="row mb-1 mt-3">
+                    <div class="col mb-2">
+                      <label for="nom" class="form-label">Numéro Carte Bancaire</label>
+                      <input required id="rib" class="form-control shadow" type="text" placeholder="Entrer le rib"
+                      [(ngModel)] = 'client.rib' name="rib">
+                    </div>
+                    <div class="row mb-1 mt-3">
+                        <div class="col mb-2">
+                          <label for="nom" class="form-label">Solde Bancaire ( en Dh )</label>
+                          <input required id="solde" class="form-control shadow" type="number" placeholder="Entrer le solde"
+                          [(ngModel)] = 'client.solde' name="solde">
+                        </div>
+                    </div>
+                  </div>
+                <button type="submit" class="btn btn-primary float-end m-5" [disabled]="!clientForm.valid">Créer le compte</button>
+            </form>
+        </div>
+    </div>
+  </div>
