@@ -7,53 +7,41 @@
             <form (ngSubmit)="onAddClient(clientForm)" #clientForm="ngForm">
                 <span style="font-weight: bold; font-size: 20px; margin: vertical 5px;">Informations client</span> <hr>
                 <div class="row mb-2">
-                    <div class="col-md-6">
+                    <!--div class="col-md-6">
                         <label class="form-label">Civilité</label>
                         <select required class="form-control shadow" [(ngModel)] = 'client.civilite' name="civilite">
                           <option>Monsieur</option>
                           <option>Madame</option>
                         </select>
-                    </div>
-                    <div class="col-md-6">
+                    </div-->
+                    <div class="col-md-12">
                       <label class="form-label">Date de Naissance</label>
-                      <input required id="naissance" class="form-control shadow" type="date" placeholder="Entrer la date de naissance"
-                      [(ngModel)] = 'client.naissance' name="naissance">
+                      <input required id="birthday" class="form-control shadow" type="date" placeholder="Entrer la date de naissance"
+                      [(ngModel)] = 'client.birthday' name="birthday">
                     </div>
                   </div>
                 <div class="row mb-1">
                   <div class="col mb-2">
-                    <label for="nom" class="form-label">Adresse</label>
-                    <input required id="adresse" class="form-control shadow" type="text" placeholder="Entrer votre adresse"
-                    [(ngModel)] = 'client.adresse' name="adresse">
-                  </div>
-                </div>
-                <div class="row mb-4">
-                  <div class="col-md-6">
-                    <label class="form-label">Ville</label>
-                    <input required id="ville" class="form-control shadow" type="text" placeholder="Entrer la ville"
-                    [(ngModel)] = 'client.ville' name="ville">
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Code Postal</label>
-                    <input required id="CpdePostal" class="form-control shadow" type="text" placeholder="Entrer le code postal"
-                    [(ngModel)] = 'client.codePostal' name="codePostal">
+                    <label for="address" class="form-label">Adresse</label>
+                    <input required id="address" class="form-control shadow" type="text" placeholder="Entrer votre adresse"
+                    [(ngModel)] = 'client.address' name="address">
                   </div>
                 </div><hr>
                 <div class="row mb-1 mt-3">
                     <div class="col mb-2">
-                      <label for="nom" class="form-label">Numéro CNI</label>
-                      <input required id="cni" class="form-control shadow" type="text" placeholder="Entrer le numéro de carte nationale"
-                      [(ngModel)] = 'client.cni' name="cni">
+                      <label for="idcard" class="form-label">Numéro CNI</label>
+                      <input required id="idcard" class="form-control shadow" type="text" placeholder="Entrer le numéro de carte nationale"
+                      [(ngModel)] = 'client.idcard' name="idcard">
                     </div>
                   </div>
                 <div class="row mb-1 mt-3">
                     <div class="col mb-2">
-                      <label for="nom" class="form-label">Numéro Carte Bancaire</label>
-                      <input required id="numCarteBancaire" class="form-control shadow" type="text" placeholder="Entrer le numéro de carte bancaire"
-                      [(ngModel)] = 'client.numCarteBancaire' name="numCarteBancaire">
+                      <label for="nom" class="form-label">Numéro d'Immatriculation</label>
+                      <input required id="immatriculation" class="form-control shadow" type="text" placeholder="Entrer le numéro d' immmatriculation"
+                      [(ngModel)] = 'client.immatriculation' name="immatriculation">
                     </div>
                   </div>
-                  <div class="row mb-1 mt-3">
+                  <!--div class="row mb-1 mt-3">
                     <div class="col mb-2">
                       <label for="nom" class="form-label">Numéro Carte Bancaire</label>
                       <input required id="rib" class="form-control shadow" type="text" placeholder="Entrer le rib"
@@ -66,7 +54,7 @@
                           [(ngModel)] = 'client.solde' name="solde">
                         </div>
                     </div>
-                  </div>
+                  </div-->
                 <button type="submit" class="btn btn-primary float-end m-5" [disabled]="!clientForm.valid">Créer le compte</button>
             </form>
         </div>
