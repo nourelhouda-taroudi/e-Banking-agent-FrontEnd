@@ -14,7 +14,7 @@ private apiServerURL = environment.apiBaseURL;
 constructor(private http : HttpClient) { }
 
 public getClients() : Observable<Client[]>{
-  return this.http.get<Client[]>(`${this.apiServerURL}/client/all`);
+  return this.http.get<Client[]>(`${this.apiServerURL}/client/getAll`);
 }
 
 public getClientById(clientID : String) : Observable<Client>{
@@ -22,15 +22,15 @@ public getClientById(clientID : String) : Observable<Client>{
 }
 
 public addClient(client : Client) : Observable<Client>{
-  return this.http.post<Client>(`${this.apiServerURL}/client/add`,client);
+  return this.http.post<Client>(`${this.apiServerURL}/client/create`,client);
 }
 
 public updateClient(client : Client) : Observable<Client>{
-  return this.http.put<Client>(`${this.apiServerURL}/client/update`,client);
+  return this.http.put<Client>(`${this.apiServerURL}/client/updateClient/${client.id}`,client);
 }
 
-public deleteClient(clientID : String) : Observable<void> {
-  return this.http.delete<void>(`${this.apiServerURL}/client/delete/${clientID}`);
+public deleteClient(clientID : Number) : Observable<void> {
+  return this.http.delete<void>(`${this.apiServerURL}/client/deleteClient/${clientID}`);
 }
 
 }
