@@ -5,7 +5,7 @@
   <div class="card">
       <div class="card-body" style="background-color: #D4D5D5;">
           <form (ngSubmit)="saveClientData(clientForm)" #clientForm="ngForm">
-              <div class="row mb-2">
+              <!--div class="row mb-2">
                   <div class="col-12">
                     <label class="form-label">Selectionner un produit</label>
                     <select required class="form-control shadow" [(ngModel)] = 'client.produit' name="produit">
@@ -13,25 +13,25 @@
                       <option>Default select</option>
                     </select>
                     </div>
-                </div>
+                </div-->
                 <span style="font-weight: bold; font-size: 20px; margin: vertical 5px;">Informations client</span> <hr>
               <div class="row mb-1">
                 <div class="col-md-6">
-                  <label for="nom" class="form-label">Nom</label>
-                  <input required id="nom" class="form-control shadow" type="text" name="" placeholder="Entrer votre nom"
-                  [(ngModel)] = 'client.nom' name="nom">
+                  <label for="last_name" class="form-label">Nom</label>
+                  <input required id="last_name" class="form-control shadow" type="text" placeholder="Entrer votre nom"
+                  [(ngModel)] = 'client.last_name' name="last_name">
                 </div>
                 <div class="col-md-6">
-                  <label for="prenom" class="form-label">Prénom</label>
-                  <input required id="prenom" class="form-control shadow" type="text" name="" placeholder="Entrer votre prénom"
-                  [(ngModel)] = 'client.prenom' name="prenom">
+                  <label for="first_name" class="form-label">Prénom</label>
+                  <input required id="first_name" class="form-control shadow" type="text" placeholder="Entrer votre prénom"
+                  [(ngModel)] = 'client.first_name' name="first_name">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <label class="form-label">Téléphone</label>
-                  <input required id="telephone" class="form-control shadow" type="text" name="" placeholder="Entrer votre numéro"
-                  [(ngModel)] = 'client.telephone' name="telephone">
+                  <input required id="phone_number" class="form-control shadow" type="text" placeholder="Entrer votre numéro"
+                  [(ngModel)] = 'client.phone_number' name="phone_number">
                 </div>
                 <div class="col-md-6">
                   <label class="form-label">Email</label>
