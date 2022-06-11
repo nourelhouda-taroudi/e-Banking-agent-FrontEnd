@@ -4,6 +4,7 @@ import { Client } from 'src/app/Models/client';
 import { Form_serviceService } from 'src/app/Services/form_service.service';
 import { ClientServicesService } from 'src/app/Services/clientServices.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ClientForm2Component implements OnInit {
 
   public client:Client = new Client();
   public clients:Client[] = [];
-  constructor(private monFormService : Form_serviceService,private clientService : ClientServicesService) { }
+  constructor(private router: Router,private monFormService : Form_serviceService,private clientService : ClientServicesService) { }
 
   ngOnInit(): void {
     this.client = this.monFormService.getClient();
@@ -33,19 +34,17 @@ export class ClientForm2Component implements OnInit {
   }
 
   public onAddClient(clientForm: NgForm): void {
-    this.client.civilite = clientForm.value.civilite;
-    this.client.naissance = clientForm.value.naissance;
-    this.client.adresse = clientForm.value.adresse;
-    this.client.ville = clientForm.value.ville;
-    this.client.codePostal = clientForm.value.codePostal;
-    this.client.cni = clientForm.value.cni;
-    this.client.numCarteBancaire = clientForm.value.numCarteBancaire;
-    this.client.rib = clientForm.value.rib;
-    this.client.solde = clientForm.value.solde;
+    this.client.birthday = clientForm.value.birthday;
+    this.client.address = clientForm.value.address;
+    this.client.idcard = clientForm.value.idcard;
+    this.client.immatriculation = clientForm.value.immatriculation;
+    // generer un mot de passe par default
+    //this.client.password = this.client.last_name.concat(this.client.phone_number.toString());
+    console.log(this.client);
     this.clientService.addClient(this.client).subscribe(
       (response: Client) => {
-        console.log(response);
         clientForm.reset();
+        this.router.navigate(['listeClients']);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
