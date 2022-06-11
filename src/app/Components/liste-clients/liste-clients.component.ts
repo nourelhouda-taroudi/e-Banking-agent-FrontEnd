@@ -10,11 +10,11 @@ import { ClientServicesService } from 'src/app/Services/clientServices.service';
 })
 export class ListeClientsComponent implements OnInit {
 
-  public clientsFilter : String | undefined;
   public updateClient: Client | undefined;
   public deleteClient: Client = new Client();
   public clientChoosed : Client = new Client();
-  public clients: Client[] = [
+  public clients: Client[] = []; /*[
+ 
     {
       id : "gvhj",
       nom : "faya",
@@ -31,63 +31,10 @@ export class ListeClientsComponent implements OnInit {
       civilite : "eqefafa",
       cni : "eqefafa",
       solde : 64655959,
-      produit : "eqefafa"
-    },
-    {
-      id : "gvhj",
-      nom : "faya",
-      prenom : "fred",
-      password : "dqfberbreqg",
-      naissance : new Date("27-06-2001"),
-      email : "fsbsndbtd",
-      telephone : "eqefafa",
-      adresse : "eqefafa",
-      ville : "eqefafa",
-      codePostal : 446995,
-      numCarteBancaire : "uhijzjejfzfjz",
-      rib : "eqefafa",
-      civilite : "eqefafa",
-      cni : "eqefafa",
-      solde : 64655959,
-      produit : "eqefafa"
-    },
-    {
-      id : "gvhj",
-      nom : "faya",
-      prenom : "fred",
-      password : "dqfberbreqg",
-      naissance : new Date("27-06-2001"),
-      email : "fsbsndbtd",
-      telephone : "eqefafa",
-      adresse : "eqefafa",
-      ville : "eqefafa",
-      codePostal : 446995,
-      numCarteBancaire : "uhijzjejfzfjz",
-      rib : "eqefafa",
-      civilite : "eqefafa",
-      cni : "eqefafa",
-      solde : 64655959,
-      produit : "eqefafa"
-    },
-    {
-      id : "gvhj",
-      nom : "faya",
-      prenom : "fred",
-      password : "dqfberbreqg",
-      naissance : new Date("27-06-2001"),
-      email : "fsbsndbtd",
-      telephone : "eqefafa",
-      adresse : "eqefafa",
-      ville : "eqefafa",
-      codePostal : 446995,
-      numCarteBancaire : "uhijzjejfzfjz",
-      rib : "eqefafa",
-      civilite : "eqefafa",
-      cni : "eqefafa",
-      solde : 64655959,
-      produit : "eqefafa"
+      produit : "eqefafa",
+      is_new : true
     }
-  ];
+  ];*/
 
   constructor(private clientService : ClientServicesService) { }
 
@@ -114,7 +61,7 @@ export class ListeClientsComponent implements OnInit {
     );
   }
 
-  public onDeleteClient(clientId: String): void {
+  public onDeleteClient(clientId: Number): void {
     this.clientService.deleteClient(clientId).subscribe(
       (response: void) => {
         console.log(response);
@@ -129,10 +76,10 @@ export class ListeClientsComponent implements OnInit {
   public searchClient(key: string): void {
     const results: Client[] = [];
     for (const client of this.clients) {
-      if (client.nom.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      if (client.last_name.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || client.email.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || client.telephone.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || client.prenom.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      || client.phone_number.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || client.first_name.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(client);
       }
     }
@@ -165,8 +112,7 @@ export class ListeClientsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.deleteClient.id = '';
-    //this.getClients();
+    this.getClients();
   }
 
 }
