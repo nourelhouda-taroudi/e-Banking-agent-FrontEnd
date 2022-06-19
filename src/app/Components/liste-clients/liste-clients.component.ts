@@ -76,10 +76,9 @@ export class ListeClientsComponent implements OnInit {
   public searchClient(key: string): void {
     const results: Client[] = [];
     for (const client of this.clients) {
-      if (client.last_name.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      if (client.username.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || client.email.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || client.phone_number.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || client.first_name.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      || client.phoneNumber.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(client);
       }
     }
