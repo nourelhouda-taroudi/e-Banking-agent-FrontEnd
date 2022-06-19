@@ -21,8 +21,8 @@ public getClientById(clientID : String) : Observable<Client>{
   return this.http.get<Client>(`${this.apiServerURL}/client/${clientID}`);
 }
 
-public addClient(client : Client) : Observable<Client>{
-  return this.http.post<Client>(`${this.apiServerURL}/client/create`,client);
+public addClient(client : Client,idAgent: number) : Observable<Client>{
+  return this.http.post<Client>(`${this.apiServerURL}/client/create/${idAgent}`,client);
 }
 
 public updateClient(client : Client) : Observable<Client>{

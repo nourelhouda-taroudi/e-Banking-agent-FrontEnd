@@ -1,5 +1,5 @@
 export class Agent {
-
-    public username : string | undefined;
-    public password: string | undefined;
+    id!:number;
+    username!: string;
+    password!: string;
 }

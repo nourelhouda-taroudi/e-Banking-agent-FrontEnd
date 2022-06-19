@@ -10,7 +10,8 @@ import { AgentAcceuilComponent } from './Components/agent-acceuil/agent-acceuil.
 import { ClientForm2Component } from './Components/client-form2/client-form2.component';
 import { AgentInfoComponent } from './Components/agent-info/agent-info.component';
 import { ListeClientsComponent } from './Components/liste-clients/liste-clients.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './utils/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,13 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
