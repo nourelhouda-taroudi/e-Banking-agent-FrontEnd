@@ -41,6 +41,7 @@ export class ClientForm2Component implements OnInit {
     this.client.birthday = clientForm.value.birthday;
     this.client.address = clientForm.value.address;
     this.client.IDCard = clientForm.value.IDCard;
+   const balance = clientForm.value.balance;
     this.client.immatriculation = clientForm.value.immatriculation;
     console.log(this.client);
     const idAgent = this.jwtService.getUserId();
@@ -53,7 +54,12 @@ export class ClientForm2Component implements OnInit {
     this.clientService.addClient(this.client,+idAgent).subscribe(
       (response: Client) => {
         clientForm.reset();
+        console.log(response)
         this.router.navigate(['listeClients']);
+       this.clientService.saveAccount(Object.values(response)[0],balance).subscribe((response:any)=>{
+        console.log("account saved")
+       })
+
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

@@ -1,12 +1,13 @@
-<div class="container">    
+<div class="container"> 
+    <button (click)="auth.logOut()" style="width: 100px;margin-left:1100px;margin-top: 50px;" >LougOut</button>   
     <div class="container mb-5">
         <div class="row">
         <div class="col-md-6">
             <img src="../../../assets/images/undraw_welcome_re_h3d9.svg" alt="Image" class="img-fluid">
         </div>
+        
         <div class="col-md-6 contents text-center align-items-center m-auto">
-            <span class="fw-bolder font-monospace fs-1"> Bienvenu(e) Civilité</span><br>
-            <span class="fw-bolder font-monospace fs-1">{{user}}</span>
+            <span class="fw-bolder font-monospace fs-1"> Bienvenu(e)  {{user}} </span><br>
         </div>
         </div>
     </div>

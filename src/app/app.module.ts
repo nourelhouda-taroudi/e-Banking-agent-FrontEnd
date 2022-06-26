@@ -12,6 +12,7 @@ import { AgentInfoComponent } from './Components/agent-info/agent-info.component
 import { ListeClientsComponent } from './Components/liste-clients/liste-clients.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './utils/jwt.interceptor';
+import { ChangePasswordComponent } from './Components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { JwtInterceptor } from './utils/jwt.interceptor';
     AgentAcceuilComponent,
     ClientForm2Component,
     AgentInfoComponent,
-    ListeClientsComponent
+    ListeClientsComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -61,8 +61,8 @@ export class ListeClientsComponent implements OnInit {
     );
   }
 
-  public onDeleteClient(clientId: Number): void {
-    this.clientService.deleteClient(clientId).subscribe(
+  public onDeleteClient(client: Client): void {
+    this.clientService.deleteClient(client).subscribe(
       (response: void) => {
         console.log(response);
         this.getClients();
@@ -93,18 +93,18 @@ export class ListeClientsComponent implements OnInit {
     const button = document.createElement('button');
     button.type = 'button';
     button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
+    button.setAttribute('data-bs-toggle', 'modal');
     if (mode === 'infos') {
       this.clientChoosed = client;
-      button.setAttribute('data-target', '#infosClientModal');
+      button.setAttribute('data-bs-target', '#infosClientModal');
     }
     if (mode === 'update') {
       this.updateClient = client;
-      button.setAttribute('data-target', '#updateClientModal');
+      button.setAttribute('data-bs-target', '#updateClientModal');
     }
     if (mode === 'delete') {
       this.deleteClient = client;
-      button.setAttribute('data-target', '#deleteClientModal');
+      button.setAttribute('data-bs-target', '#deleteClientModal');
     }
     container?.appendChild(button);
     button.click();
