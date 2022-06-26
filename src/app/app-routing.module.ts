@@ -6,15 +6,16 @@ import { AgentAcceuilComponent } from './Components/agent-acceuil/agent-acceuil.
 import { ClientForm2Component } from './Components/client-form2/client-form2.component';
 import { ListeClientsComponent } from './Components/liste-clients/liste-clients.component';
 import { AgentInfoComponent } from './Components/agent-info/agent-info.component';
+import { AuthGuard } from './Components/guards/auth.guard';
 
 const routes: Routes = [
   { path: 'agentLogin', component: AgentLoginComponent },
   { path: '', redirectTo : 'agentLogin', pathMatch : 'full'},
-  { path: 'acceuilAgent', component: AgentAcceuilComponent},
-  { path: 'creationCompteClient', component: ClientFormComponent },
-  { path: 'creationCompteClient/creationCompteClient2', component: ClientForm2Component },
-  { path: 'listeClients', component: ListeClientsComponent },
-  { path: 'agentInfo', component: AgentInfoComponent }
+  { path: 'acceuilAgent', component: AgentAcceuilComponent,canActivate:[AuthGuard]},
+  { path: 'creationCompteClient', component: ClientFormComponent ,canActivate:[AuthGuard]},
+  { path: 'creationCompteClient/creationCompteClient2', component: ClientForm2Component ,canActivate:[AuthGuard]},
+  { path: 'listeClients', component: ListeClientsComponent,canActivate:[AuthGuard] },
+  { path: 'agentInfo', component: AgentInfoComponent ,canActivate:[AuthGuard]}
 
   
 ];
