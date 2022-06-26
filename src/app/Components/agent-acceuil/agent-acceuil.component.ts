@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/Services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { JwtService } from 'src/app/Services/jwt.service';
 
@@ -9,7 +10,8 @@ import { JwtService } from 'src/app/Services/jwt.service';
 export class AgentAcceuilComponent implements OnInit {
   user:string|null = '';
   constructor(
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
+    public auth:AuthService
   ) { }
   ngOnInit(): void {
     this.getUser();
@@ -17,5 +19,6 @@ export class AgentAcceuilComponent implements OnInit {
   getUser(){
     this.user = this.jwtService.getUsername();
   }
+
 
 }

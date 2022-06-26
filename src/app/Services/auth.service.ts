@@ -14,13 +14,12 @@ export class AuthService {
     return this.http.post<any>(this.url + 'signin', payload);
   }
   loggedIn() {
-    console.log("conn")
     return  !!localStorage.getItem('token')
     }
   
   
    logOut(){
     localStorage.removeItem('token')
-    this.router.navigate(['/auth'])
+    this.router.navigate(['/agentLogin'])
    }
 }

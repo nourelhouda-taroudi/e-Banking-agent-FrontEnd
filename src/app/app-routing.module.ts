@@ -1,3 +1,5 @@
+import { ChangePasswordComponent } from './Components/change-password/change-password.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientFormComponent } from './Components/client-form/client-form.component';
@@ -15,7 +17,8 @@ const routes: Routes = [
   { path: 'creationCompteClient', component: ClientFormComponent ,canActivate:[AuthGuard]},
   { path: 'creationCompteClient/creationCompteClient2', component: ClientForm2Component ,canActivate:[AuthGuard]},
   { path: 'listeClients', component: ListeClientsComponent,canActivate:[AuthGuard] },
-  { path: 'agentInfo', component: AgentInfoComponent ,canActivate:[AuthGuard]}
+  { path: 'agentInfo', component: AgentInfoComponent ,canActivate:[AuthGuard]},
+  { path: 'change', component: ChangePasswordComponent ,canActivate:[AuthGuard]},
 
   
 ];

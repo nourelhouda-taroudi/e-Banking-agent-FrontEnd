@@ -35,11 +35,13 @@ public addClient(client : Client,idAgent: number) : Observable<Client>{
 }
 
 public updateClient(client : Client) : Observable<Client>{
-  return this.http.put<Client>(`${this.apiServerURL}/client/updateClient/${client.id}`,client,{headers:this.httpHeaders});
+  return this.http.put<Client>(`${this.apiServerURL}/client/${client.id}`,client,{headers:this.httpHeaders});
 }
 
-public deleteClient(clientID : Number) : Observable<void> {
-  return this.http.delete<void>(`${this.apiServerURL}/client/deleteClient/${clientID}`,{headers:this.httpHeaders});
+public deleteClient(client : Client) : Observable<void> {
+  return this.http.delete<void>(`${this.apiServerURL}/client/${client.id}`,{headers:this.httpHeaders});
 }
-
+public saveAccount(id:number, balence: number):Observable<Client>{
+  return this.http.post<Client>(`http://localhost:8090/account/${id}`,balence,{headers  : this.httpHeaders});
+}
 }
